@@ -1,11 +1,14 @@
-import java.util.regex.Pattern;
-import java.util.concurrent.TimeUnit;
-import org.junit.*;
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
+
+import java.util.concurrent.TimeUnit;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class Testcase1 {
   private WebDriver driver;
@@ -20,6 +23,15 @@ public class Testcase1 {
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
+  @After
+  public void tearDown() throws Exception {
+    driver.quit();
+    String verificationErrorString = verificationErrors.toString();
+    if (!"".equals(verificationErrorString)) {
+      fail(verificationErrorString);
+    }
+  }
+
   @Test
   public void whenBuyingOneBook_thenOrderIsProvisioned() throws Exception {
     driver.get(baseUrl + "/warehouse/WareHouse.php");
@@ -32,16 +44,8 @@ public class Testcase1 {
     driver.findElement(By.id("n1")).clear();
     driver.findElement(By.id("n1")).sendKeys("1");
     driver.findElement(By.name("Buy_articles")).click();
-    assertEquals("Orders fulfilled = 1 Response #:", driver.findElement(By.xpath("//tr[6]/td")).getText());
-  }
-
-  @After
-  public void tearDown() throws Exception {
-    driver.quit();
-    String verificationErrorString = verificationErrors.toString();
-    if (!"".equals(verificationErrorString)) {
-      fail(verificationErrorString);
-    }
+    assertThat(isElementPresent(By.xpath("//tr[6]/td"))).isTrue();
+    assertThat("Orders fulfilled = 0 Response #:1000").isEqualTo(driver.findElement(By.xpath("//tr[6]/td")).getText());
   }
 
   private boolean isElementPresent(By by) {
