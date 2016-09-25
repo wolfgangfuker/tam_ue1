@@ -1,15 +1,13 @@
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
 import org.junit.*;
-
-import static com.sun.xml.internal.ws.dump.LoggingDumpTube.Position.Before;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class TestCase1 {
+public class Testcase1 {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -23,10 +21,18 @@ public class TestCase1 {
   }
 
   @Test
-  public void testCase1() throws Exception {
+  public void whenBuyingOneBook_thenOrderIsProvisioned() throws Exception {
     driver.get(baseUrl + "/warehouse/WareHouse.php");
-    new Select(driver.findElement(By.name("ArticleType"))).selectByVisibleText("BOOK");
     driver.findElement(By.name("Query_types")).click();
+    driver.findElement(By.id("UserCode")).clear();
+    driver.findElement(By.id("UserCode")).sendKeys("10000");
+    new Select(driver.findElement(By.name("ArticleType"))).selectByVisibleText("BOOK");
+    driver.findElement(By.name("Query_articles")).click();
+    driver.findElement(By.id("c1")).click();
+    driver.findElement(By.id("n1")).clear();
+    driver.findElement(By.id("n1")).sendKeys("1");
+    driver.findElement(By.name("Buy_articles")).click();
+    assertEquals("Orders fulfilled = 1 Response #:", driver.findElement(By.xpath("//tr[6]/td")).getText());
   }
 
   @After
