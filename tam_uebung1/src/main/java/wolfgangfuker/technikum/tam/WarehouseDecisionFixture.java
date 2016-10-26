@@ -16,25 +16,21 @@ public class WarehouseDecisionFixture {
     private String articleType;
 
     public void beginTable() {
-//        driver = new FirefoxDriver();
-        System.setProperty("webdriver.gecko.driver", "D:/Privat/Installs/geckodriver.exe");
+        System.setProperty("webdriver.firefox.marionette","D:\\FH\\geckodriver.exe");
+        driver = new FirefoxDriver();
+//        System.setProperty("webdriver.gecko.driver", "D:/FH/geckodriver.exe");
 
         //Now you can Initialize marionette driver to launch firefox
-        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-        capabilities.setCapability("marionette", true);
-        WebDriver driver = new MarionetteDriver(capabilities);
+//        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+//        capabilities.setCapability("marionette", true);
+//        WebDriver driver = new MarionetteDriver(capabilities);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        String baseUrl = "http://127.0.0.1/";
-        driver.get(baseUrl + "/warehouse/WareHouse.php");
+        driver.get("http://127.0.0.1/warehouse/WareHouse.php");
     }
 
     public void setArticleType(String type) {
         this.articleType = type;
 
-    }
-
-    public void endTable() {
-        driver.quit();
     }
 
     public boolean loaded() {
@@ -45,5 +41,9 @@ public class WarehouseDecisionFixture {
             return false;
         }
         return true;
+    }
+
+    public void endTable() {
+        driver.quit();
     }
 }

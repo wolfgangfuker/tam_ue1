@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.fail;
 
-public class Testcase1 {
+public class TestCase1 {
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
