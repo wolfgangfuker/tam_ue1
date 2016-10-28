@@ -4,8 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.MarionetteDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.concurrent.TimeUnit;
@@ -16,7 +14,7 @@ public class WarehouseDecisionFixture {
     private String articleType;
 
     public void beginTable() {
-        System.setProperty("webdriver.firefox.marionette","D:\\FH\\geckodriver.exe");
+        System.setProperty("webdriver.gecko.driver","D:\\Privat\\Installs\\geckodriver.exe");
         driver = new FirefoxDriver();
 //        System.setProperty("webdriver.gecko.driver", "D:/FH/geckodriver.exe");
 
@@ -24,7 +22,7 @@ public class WarehouseDecisionFixture {
 //        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
 //        capabilities.setCapability("marionette", true);
 //        WebDriver driver = new MarionetteDriver(capabilities);
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.get("http://127.0.0.1/warehouse/WareHouse.php");
     }
 
