@@ -1,0 +1,18 @@
+!***< hidden
+
+!define TEST_SYSTEM {slim}
+
+!path D:\FH\github\tam_ue1\tam_uebung1\target\classes
+!path D:\FH\selenium-server-standalone-3.0.1.jar
+
+*!
+
+Let's check our article type loading
+
+|wolfgangfuker.technikum.tam.WarehouseDecisionFixture	|
+|article type				|loaded?					|
+|MAGA						|true						|
+|BOOK						|true						|
+|FILM						|false						|
+
+
