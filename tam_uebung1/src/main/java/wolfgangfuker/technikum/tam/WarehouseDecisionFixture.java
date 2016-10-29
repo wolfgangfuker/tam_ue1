@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.UnreachableBrowserException;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.concurrent.TimeUnit;
@@ -30,6 +31,8 @@ public class WarehouseDecisionFixture {
         try {
             new Select(driver.findElement(By.name("ArticleType"))).selectByVisibleText(articleType);
         } catch (NoSuchElementException e) {
+            return false;
+        } catch (UnreachableBrowserException e2) {
             return false;
         }
         return true;
