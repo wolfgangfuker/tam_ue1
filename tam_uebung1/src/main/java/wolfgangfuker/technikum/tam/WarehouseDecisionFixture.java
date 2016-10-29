@@ -14,7 +14,7 @@ public class WarehouseDecisionFixture {
     private String articleType;
 
     public void beginTable() {
-        System.setProperty("webdriver.gecko.driver","D:\\Privat\\Installs\\geckodriver.exe");
+        System.setProperty("webdriver.gecko.driver","C:\\Users\\basti\\Documents\\TAM\\geckodriver.exe");
         driver = new FirefoxDriver();
 //        System.setProperty("webdriver.gecko.driver", "D:/FH/geckodriver.exe");
 

@@ -19,7 +19,7 @@ public class TestCase1 {
     @Before
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
-        baseUrl = "http://127.0.0.1/";
+        baseUrl = "http://localhost";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
@@ -34,7 +34,7 @@ public class TestCase1 {
 
     @Test
     public void whenBuyingOneBook_thenOrderIsProvisioned() throws Exception {
-        driver.get(baseUrl + "/warehouse/WareHouse.php");
+        driver.get(baseUrl + "/Warehouse/WareHouse.php");
         driver.findElement(By.name("Query_types")).click();
         driver.findElement(By.id("UserCode")).clear();
         driver.findElement(By.id("UserCode")).sendKeys("10000");
