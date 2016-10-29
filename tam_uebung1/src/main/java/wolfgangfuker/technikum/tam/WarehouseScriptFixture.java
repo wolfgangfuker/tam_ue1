@@ -14,7 +14,7 @@ public class WarehouseScriptFixture {
     private WebDriver driver;
     public void beginTable() {
         //C:\Users\basti\Documents\TAM
-        System.setProperty("webdriver.gecko.driver", "C:\\Users\\basti\\Documents\\TAM\\geckodriver.exe");
+        System.setProperty("webdriver.gecko.driver", "D:\\FH\\geckodriver.exe");
         driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.get("http://127.0.0.1/warehouse/WareHouse.php");
@@ -38,21 +38,14 @@ public class WarehouseScriptFixture {
     }
 
     public void buyArticleWithAmount(String article, String amount) {
-        driver.findElement(By.id("c0")).click();
-        driver.findElement(By.id("n0")).clear();
-        driver.findElement(By.id("n0")).sendKeys(amount);
-
-
-
+        driver.findElement(By.xpath("//tr[td/text() = \"Newsweek\"]/td/input[@type='checkbox']")).click();
+        driver.findElement(By.xpath("//tr[td/text() = \"Newsweek\"]/td/input[@type='text']")).clear();
+        driver.findElement(By.xpath("//tr[td/text() = \"Newsweek\"]/td/input[@type='text']")).sendKeys(amount);
     }
 
     public String resultStatus() {
-
         driver.findElement(By.name("Buy_articles")).click();
-
-        WebElement aboutMe;
         String result=driver.findElement(By.xpath("//tr[6]/td[@colspan='2'][not(./table)]")).getText();
-
         endTable();
         return result;
     }

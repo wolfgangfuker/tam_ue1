@@ -14,14 +14,8 @@ public class WarehouseDecisionFixture {
     private String articleType;
 
     public void beginTable() {
-        System.setProperty("webdriver.gecko.driver","C:\\Users\\basti\\Documents\\TAM\\geckodriver.exe");
+        System.setProperty("webdriver.gecko.driver", "D:\\FH\\geckodriver.exe");
         driver = new FirefoxDriver();
-//        System.setProperty("webdriver.gecko.driver", "D:/FH/geckodriver.exe");
-
-        //Now you can Initialize marionette driver to launch firefox
-//        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-//        capabilities.setCapability("marionette", true);
-//        WebDriver driver = new MarionetteDriver(capabilities);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.get("http://127.0.0.1/warehouse/WareHouse.php");
     }

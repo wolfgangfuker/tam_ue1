@@ -1,0 +1,17 @@
+!***< hidden
+
+!define TEST_SYSTEM {slim}
+
+!path D:\FH\github\tam_ue1\tam_uebung1\target\classes
+!path D:\FH\selenium-server-standalone-3.0.1.jar
+
+*!
+
+Lets check our ordering workflow
+
+|script |wolfgangfuker.technikum.tam.WarehouseScriptFixture |
+|load article types |
+|select article type | MAGA |
+|query articles with user code | 009997 |
+|buy article | Newsweek |with amount | 2 |
+|check |result status |Orders fulfilled = 1 Response #:1000 |
