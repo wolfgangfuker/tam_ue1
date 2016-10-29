@@ -38,9 +38,9 @@ public class WarehouseScriptFixture {
     }
 
     public void buyArticleWithAmount(String article, String amount) {
-        driver.findElement(By.xpath("//tr[td/text() = \"Newsweek\"]/td/input[@type='checkbox']")).click();
-        driver.findElement(By.xpath("//tr[td/text() = \"Newsweek\"]/td/input[@type='text']")).clear();
-        driver.findElement(By.xpath("//tr[td/text() = \"Newsweek\"]/td/input[@type='text']")).sendKeys(amount);
+        driver.findElement(By.xpath("//tr[td/text() = \"" + article + "\"]/td/input[@type='checkbox']")).click();
+        driver.findElement(By.xpath("//tr[td/text() = \"" + article + "\"]/td/input[@type='text']")).clear();
+        driver.findElement(By.xpath("//tr[td/text() = \"" + article + "\"]/td/input[@type='text']")).sendKeys(amount);
     }
 
     public String resultStatus() {

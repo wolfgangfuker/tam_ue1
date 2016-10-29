@@ -29,7 +29,7 @@ public class WarehouseDecisionFixture {
         driver.findElement(By.name("Query_types")).click();
         try {
             new Select(driver.findElement(By.name("ArticleType"))).selectByVisibleText(articleType);
-        } catch(NoSuchElementException e) {
+        } catch (NoSuchElementException e) {
             return false;
         }
         return true;
